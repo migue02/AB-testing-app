@@ -4,13 +4,13 @@ import { Colors } from '../../utils';
 import styles from './styles';
 import { IButton } from '../Button/types';
 
-const SecondaryButton: FC<IButton> = (props) => {
+const LinkButton: FC<IButton> = (props) => {
     const { text, onPress, marginTop, width } = props;
 
     return (
         <Button
             text={text}
-            backgroundColor={Colors.secondaryButton.backgroundColor}
+            backgroundColor={Colors.linkButton.backgroundColor}
             textStyle={styles.text}
             onPress={onPress}
             height={36}
@@ -20,4 +20,4 @@ const SecondaryButton: FC<IButton> = (props) => {
     );
 };
 
-export default SecondaryButton;
+export default LinkButton;
