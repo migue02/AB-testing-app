@@ -12,8 +12,13 @@ export const Colors = {
     backgroundColor: '#FFC34E',
     color: '#FFFFFF'
   },
-  popup: {
-    backgroundColor: '#B2B2B2',
+  linkButton: {
+    backgroundColor: 'transparent',
+    color: '#000000'
+  },
+  modal: {
+    backgroundColor: '#FFFFFF',
+    backgroundColorOutside: '#B2B2B2',
   },
   test: {
     color: '#000000',
