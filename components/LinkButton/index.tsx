@@ -13,7 +13,7 @@ const LinkButton: FC<IButton> = (props) => {
             backgroundColor={Colors.linkButton.backgroundColor}
             textStyle={styles.text}
             onPress={onPress}
-            height={36}
+            height={20}
             marginTop={marginTop}
             width={width}
         />

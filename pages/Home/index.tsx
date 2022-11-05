@@ -1,14 +1,26 @@
-import { Text, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import { View } from 'react-native';
+import React, { useState } from 'react';
 import styles from './styles';
 import PrimaryButton from '../../components/PrimaryButton';
-import SecondaryButton from '../../components/SecondaryButton';
+import Modal from '../../components/Modal';
+import Test from '../Test';
 
 const Home = () => {
+    const [modalVisible, setModalVisible] = useState(false);
+
     return (
         <View style={styles.container}>
-            <PrimaryButton text="Rate us" />
-            <SecondaryButton text="Rate us 2" />
+            <PrimaryButton
+                text="Rate us"
+                onPress={() => setModalVisible(!modalVisible)}
+            />
+            <Modal
+                isVisible={modalVisible}
+                setVisible={setModalVisible}
+                hasCloseButton
+            >
+                <Test />
+            </Modal>
         </View>
     );
 };
