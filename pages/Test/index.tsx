@@ -1,10 +1,20 @@
 import { Image, Text, View } from 'react-native';
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './styles';
 import PrimaryButton from '../../components/PrimaryButton';
 import TextButton from '../../components/TextButton';
+import { TestProps } from '../types';
+import { openRacketPalInStore } from '../../utils';
+import { useMonitoring } from '../../context/MonitoringData';
+import {
+    getGoToRateOnStoreEvent,
+    getOnGetFeedbackEvent,
+} from '../../client/ABTestingDataClient/utils';
 
-const Test = () => {
+const Test: FC<TestProps> = (props) => {
+    const { closeModal, onGiveFeedback } = props;
+    const { triggerMonitoringEvent } = useMonitoring();
+
     return (
         <View style={styles.container}>
             <Image
@@ -18,12 +28,19 @@ const Test = () => {
             </Text>
             <PrimaryButton
                 text="Rate us"
-                onPress={() => console.log('pressed')}
+                onPress={() => {
+                    closeModal?.();
+                    triggerMonitoringEvent(getGoToRateOnStoreEvent());
+                    openRacketPalInStore();
+                }}
                 {...styles.button}
             />
             <TextButton
                 text="Not yet? Give us feedback"
-                onPress={() => console.log('pressed')}
+                onPress={() => {
+                    onGiveFeedback();
+                    triggerMonitoringEvent(getOnGetFeedbackEvent());
+                }}
                 {...styles.buttonLink}
             />
         </View>

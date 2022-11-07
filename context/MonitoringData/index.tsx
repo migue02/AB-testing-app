@@ -3,7 +3,7 @@ import {
     AnalyticsEvent,
     ContextType,
     MonitoringDataProviderType,
-} from './types';
+} from './../types';
 
 const contextDefaults: ContextType = {
     clients: [],

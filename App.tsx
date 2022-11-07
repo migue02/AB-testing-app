@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import Home from './pages/Home';
+import Navigation from './navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { Colors } from './utils';
 import { MonitoringDataProvider } from './context/MonitoringData';
@@ -9,6 +9,7 @@ import {
     ABTestingDataClient,
     createABTestingDataClient,
 } from './client/ABTestingDataClient';
+import { getSelectedABTesting } from './client/ABTestingDataClient/utils';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,11 +24,10 @@ export default function App() {
         async function prepare() {
             await SplashScreen.preventAutoHideAsync();
         }
-        const testDataClient = createABTestingDataClient('test');
-        const controlDataClient = createABTestingDataClient('control');
+        const abDataClient = createABTestingDataClient(getSelectedABTesting());
 
         prepare();
-        setClients([testDataClient, controlDataClient]);
+        setClients([abDataClient]);
     }, []);
 
     const onLayoutRootView = useCallback(async () => {
@@ -43,7 +43,7 @@ export default function App() {
     return (
         <View style={styles.container} onLayout={onLayoutRootView}>
             <MonitoringDataProvider clients={clients}>
-                <Home />
+                <Navigation />
             </MonitoringDataProvider>
         </View>
     );
