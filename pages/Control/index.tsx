@@ -16,7 +16,7 @@ const Control: FC<IModalViewProps> = (props) => {
 
     const handleSelectedStar = (index: number) => {
         setStars(index);
-        if (index > 3) {
+        if (index >= 3) {
             closeModal?.();
         }
     };
