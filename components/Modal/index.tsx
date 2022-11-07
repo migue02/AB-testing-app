@@ -4,14 +4,14 @@ import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 
 interface IProps {
-    isVisible: boolean;
-    setVisible: React.Dispatch<React.SetStateAction<boolean>>;
     children: ReactNode;
+    isVisible: boolean;
+    handleClose: () => void;
     hasCloseButton?: boolean;
 }
 
 const Modal: FC<IProps> = (props) => {
-    const { isVisible, setVisible, children, hasCloseButton } = props;
+    const { children, isVisible, handleClose, hasCloseButton } = props;
 
     return (
         <RNModal
@@ -19,7 +19,7 @@ const Modal: FC<IProps> = (props) => {
             transparent={true}
             visible={isVisible}
             onRequestClose={() => {
-                setVisible(!isVisible);
+                handleClose();
             }}
         >
             <View style={styles.centeredView}>
@@ -27,7 +27,7 @@ const Modal: FC<IProps> = (props) => {
                     {hasCloseButton && (
                         <TouchableOpacity
                             style={styles.closeButton}
-                            onPress={() => setVisible(!isVisible)}
+                            onPress={() => handleClose()}
                         >
                             <Ionicons name="close" size={24} color="black" />
                         </TouchableOpacity>
