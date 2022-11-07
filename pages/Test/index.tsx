@@ -3,11 +3,11 @@ import React, { FC } from 'react';
 import styles from './styles';
 import PrimaryButton from '../../components/PrimaryButton';
 import TextButton from '../../components/TextButton';
-import { IModalViewProps } from '../types';
+import { TestProps } from '../types';
 import { openRacketPalInStore } from '../../utils';
 
-const Test: FC<IModalViewProps> = (props) => {
-    const { closeModal } = props;
+const Test: FC<TestProps> = (props) => {
+    const { closeModal, onGiveFeedback } = props;
     return (
         <View style={styles.container}>
             <Image
@@ -29,7 +29,7 @@ const Test: FC<IModalViewProps> = (props) => {
             />
             <TextButton
                 text="Not yet? Give us feedback"
-                onPress={() => closeModal?.()}
+                onPress={() => onGiveFeedback()}
                 {...styles.buttonLink}
             />
         </View>

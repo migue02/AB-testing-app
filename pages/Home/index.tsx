@@ -7,11 +7,12 @@ import Modal from '../../components/Modal';
 import Test from '../Test';
 import Control from '../Control';
 import useVisibleModal from '../../hooks/useModal';
-import { IModalViewProps } from '../types';
+import { HomeProps } from '../types';
 
-const Home: FC<IModalViewProps> = (props) => {
+const Home: FC<HomeProps> = (props) => {
     const [selectedModal, setSelectedModal] = useState<'test' | 'control'>();
     const [isModalVisible, , toggle] = useVisibleModal(false);
+    const { navigation } = props;
 
     return (
         <View style={styles.container}>
@@ -37,7 +38,13 @@ const Home: FC<IModalViewProps> = (props) => {
                 {selectedModal === 'control' ? (
                     <Control closeModal={() => toggle()} />
                 ) : (
-                    <Test closeModal={() => toggle()} />
+                    <Test
+                        onGiveFeedback={() => {
+                            toggle();
+                            navigation.navigate('ContactUS');
+                        }}
+                        closeModal={() => toggle()}
+                    />
                 )}
             </Modal>
         </View>

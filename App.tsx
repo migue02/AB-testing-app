@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import Home from './pages/Home';
+import Navigation from './navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { Colors } from './utils';
 import { MonitoringDataProvider } from './context/MonitoringData';
@@ -43,7 +43,7 @@ export default function App() {
     return (
         <View style={styles.container} onLayout={onLayoutRootView}>
             <MonitoringDataProvider clients={clients}>
-                <Home />
+                <Navigation />
             </MonitoringDataProvider>
         </View>
     );
