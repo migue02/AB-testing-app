@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+export type EventTypes = 'RATING' | 'REMIND_LATER';
 export interface MonitoringDataClient {
     name: string;
     key: string;
@@ -10,9 +11,14 @@ export interface MonitoringDataClient {
 }
 
 export type AnalyticsEvent = {
-    user?: string;
+    type: EventTypes
+    date: string;
+    user: string;
+};
+
+export type AnalyticsRatingsEvent = AnalyticsEvent & {
+    stars: number;
     text?: string;
-    payload?: any;
 };
 
 export type ContextType = {

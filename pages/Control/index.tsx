@@ -5,9 +5,13 @@ import styles from './styles';
 import TextButton from '../../components/TextButton';
 import StarButtons from '../../components/StarButtons';
 import Form from '../../components/Form';
-import { Colors } from '../../utils';
+import { Colors, openRacketPalInStore } from '../../utils';
 import { useMonitoring } from '../../context/MonitoringData';
 import { IModalViewProps } from '../types';
+import {
+    getRatingEvent,
+    getRemindMeLaterEvent,
+} from '../../client/ABTestingDataClient/utils';
 
 const Control: FC<IModalViewProps> = (props) => {
     const [stars, setStars] = useState(-1);
@@ -18,11 +22,18 @@ const Control: FC<IModalViewProps> = (props) => {
         setStars(index);
         if (index >= 3) {
             closeModal?.();
+            triggerMonitoringEvent(getRatingEvent(index));
+            openRacketPalInStore();
         }
     };
 
     const onSubmit = (text: string) => {
-        triggerMonitoringEvent({ text });
+        triggerMonitoringEvent(getRatingEvent(stars, text));
+        closeModal?.();
+    };
+
+    const onRemindMeLater = () => {
+        triggerMonitoringEvent(getRemindMeLaterEvent());
         closeModal?.();
     };
 
@@ -46,7 +57,7 @@ const Control: FC<IModalViewProps> = (props) => {
                 <TextButton
                     text="Remind me later"
                     isUpperCase
-                    onPress={() => console.log('pressed')}
+                    onPress={onRemindMeLater}
                     {...styles.buttonText}
                 />
             )}
