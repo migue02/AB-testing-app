@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export type EventTypes = 'RATING' | 'REMIND_LATER';
+export type EventTypes = 'RATING' | 'REMIND_LATER' | 'MODAL_CLOSED' | 'GO_TO_RATE_STORE' | 'GO_ON_GET_FEEDBACK';
 export interface MonitoringDataClient {
     name: string;
     key: string;

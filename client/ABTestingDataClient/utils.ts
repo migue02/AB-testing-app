@@ -26,3 +26,24 @@ export const getRemindMeLaterEvent = (): AnalyticsEvent => {
         ...getCommonEventValues(),
     }
 }
+
+export const getCloseModalEvent = (): AnalyticsEvent => {
+    return {
+        type: 'MODAL_CLOSED',
+        ...getCommonEventValues(),
+    }
+}
+
+export const getGoToRateOnStoreEvent = (): AnalyticsEvent => {
+    return {
+        type: 'GO_TO_RATE_STORE',
+        ...getCommonEventValues(),
+    }
+}
+
+export const getOnGetFeedbackEvent = (): AnalyticsEvent => {
+    return {
+        type: 'GO_ON_GET_FEEDBACK',
+        ...getCommonEventValues(),
+    }
+}
