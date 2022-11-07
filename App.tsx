@@ -9,6 +9,11 @@ import {
     ABTestingDataClient,
     createABTestingDataClient,
 } from './client/ABTestingDataClient';
+<<<<<<< Updated upstream
+=======
+import { getSelectedABTesting } from './client/ABTestingDataClient/utils';
+import Navigation from './navigation';
+>>>>>>> Stashed changes
 
 SplashScreen.preventAutoHideAsync();
 
@@ -43,7 +48,7 @@ export default function App() {
     return (
         <View style={styles.container} onLayout={onLayoutRootView}>
             <MonitoringDataProvider clients={clients}>
-                <Home />
+                <Navigation />
             </MonitoringDataProvider>
         </View>
     );
