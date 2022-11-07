@@ -1,5 +1,5 @@
-import { AnalyticsEvent, MonitoringDataClient } from "../context/types";
-
+import { AnalyticsEvent, MonitoringDataClient } from "../../context/types";
+import { ABTestingTypes } from "./types";
 
 export class ABTestingDataClient implements MonitoringDataClient {
     constructor(key: string) {
@@ -24,6 +24,6 @@ export class ABTestingDataClient implements MonitoringDataClient {
     }
 }
 
-export const createABTestingDataClient = (key: string) => {
+export const createABTestingDataClient = (key: ABTestingTypes) => {
     return new ABTestingDataClient(key);
 };

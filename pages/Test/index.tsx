@@ -1,10 +1,13 @@
 import { Image, Text, View } from 'react-native';
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './styles';
 import PrimaryButton from '../../components/PrimaryButton';
 import TextButton from '../../components/TextButton';
+import { IModalViewProps } from '../types';
+import { openRacketPalInStore } from '../../utils';
 
-const Test = () => {
+const Test: FC<IModalViewProps> = (props) => {
+    const { closeModal } = props;
     return (
         <View style={styles.container}>
             <Image
@@ -18,12 +21,15 @@ const Test = () => {
             </Text>
             <PrimaryButton
                 text="Rate us"
-                onPress={() => console.log('pressed')}
+                onPress={() => {
+                    closeModal?.();
+                    openRacketPalInStore();
+                }}
                 {...styles.button}
             />
             <TextButton
                 text="Not yet? Give us feedback"
-                onPress={() => console.log('pressed')}
+                onPress={() => closeModal?.()}
                 {...styles.buttonLink}
             />
         </View>

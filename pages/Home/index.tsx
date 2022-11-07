@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import styles from './styles';
 import PrimaryButton from '../../components/PrimaryButton';
 import SecondaryButton from '../../components/SecondaryButton';
@@ -7,10 +7,11 @@ import Modal from '../../components/Modal';
 import Test from '../Test';
 import Control from '../Control';
 import useVisibleModal from '../../hooks/useModal';
+import { IModalViewProps } from '../types';
 
-const Home = () => {
+const Home: FC<IModalViewProps> = (props) => {
     const [selectedModal, setSelectedModal] = useState<'test' | 'control'>();
-    const [isModalVisible, setModalVisible, toggle] = useVisibleModal(false);
+    const [isModalVisible, , toggle] = useVisibleModal(false);
 
     return (
         <View style={styles.container}>
@@ -30,10 +31,14 @@ const Home = () => {
             />
             <Modal
                 isVisible={isModalVisible}
-                handleClose={() => setModalVisible(false)}
+                handleClose={() => toggle()}
                 hasCloseButton={selectedModal === 'test'}
             >
-                {selectedModal === 'control' ? <Control /> : <Test />}
+                {selectedModal === 'control' ? (
+                    <Control closeModal={() => toggle()} />
+                ) : (
+                    <Test closeModal={() => toggle()} />
+                )}
             </Modal>
         </View>
     );

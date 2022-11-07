@@ -9,6 +9,7 @@ import {
     ABTestingDataClient,
     createABTestingDataClient,
 } from './client/ABTestingDataClient';
+import { getSelectedABTesting } from './client/ABTestingDataClient/utils';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,11 +24,10 @@ export default function App() {
         async function prepare() {
             await SplashScreen.preventAutoHideAsync();
         }
-        const testDataClient = createABTestingDataClient('test');
-        const controlDataClient = createABTestingDataClient('control');
+        const abDataClient = createABTestingDataClient(getSelectedABTesting());
 
         prepare();
-        setClients([testDataClient, controlDataClient]);
+        setClients([abDataClient]);
     }, []);
 
     const onLayoutRootView = useCallback(async () => {

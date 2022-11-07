@@ -1,21 +1,29 @@
 import { Image, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import styles from './styles';
 import TextButton from '../../components/TextButton';
 import StarButtons from '../../components/StarButtons';
 import Form from '../../components/Form';
 import { Colors } from '../../utils';
+import { useMonitoring } from '../../context/MonitoringData';
+import { IModalViewProps } from '../types';
 
-const Control = () => {
+const Control: FC<IModalViewProps> = (props) => {
     const [stars, setStars] = useState(-1);
+    const { triggerMonitoringEvent } = useMonitoring();
+    const { closeModal } = props;
 
     const handleSelectedStar = (index: number) => {
         setStars(index);
+        if (index > 3) {
+            closeModal?.();
+        }
     };
 
     const onSubmit = (text: string) => {
-        console.log({ text });
+        triggerMonitoringEvent({ text });
+        closeModal?.();
     };
 
     return (
