@@ -1,5 +1,5 @@
 import { Text, TextInput, View } from 'react-native';
-import React, { FC } from 'react';
+import { useState, FC } from 'react';
 import styles from './styles';
 import SecondaryButton from '../SecondaryButton';
 
@@ -9,7 +9,7 @@ interface IProps {
 
 const Form: FC<IProps> = (props) => {
     const { onSubmit } = props;
-    const [text, onChangeText] = React.useState('');
+    const [text, onChangeText] = useState('');
     return (
         <View style={styles.container}>
             <View style={styles.innercontainer}>

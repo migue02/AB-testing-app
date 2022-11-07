@@ -8,7 +8,7 @@ import Form from '../../components/Form';
 import { Colors } from '../../utils';
 
 const Control = () => {
-    const [stars, setStars] = useState<number>(-1);
+    const [stars, setStars] = useState(-1);
 
     const handleSelectedStar = (index: number) => {
         setStars(index);
