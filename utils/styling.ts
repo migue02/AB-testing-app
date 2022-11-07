@@ -3,7 +3,8 @@
  */
 export const Colors = {
   backgroundColor: '#FFFFFF',
-  color: '#000000',
+  primaryColor: '#1FB0F7',
+  secondaryColor: '#FFC34E',
   primaryButton: {
     backgroundColor: '#1FB0F7',
     color: '#FFFFFF'
@@ -12,13 +13,17 @@ export const Colors = {
     backgroundColor: '#FFC34E',
     color: '#FFFFFF'
   },
-  linkButton: {
+  textButton: {
     backgroundColor: 'transparent',
     color: '#000000'
+  },
+  input: {
+    color: '#282828',
   },
   modal: {
     backgroundColor: '#FFFFFF',
     backgroundColorOutside: '#B2B2B2',
+    bordeColor: '#EFEFEF',
   },
   test: {
     color: '#000000',

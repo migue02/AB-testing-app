@@ -1,9 +1,4 @@
-import {
-    GestureResponderEvent,
-    Pressable,
-    Text,
-    TextStyle,
-} from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 import React, { FC } from 'react';
 import styles from './styles';
 import { IGenericButton } from './types';
@@ -20,7 +15,7 @@ const Button: FC<IGenericButton> = (props) => {
     } = props;
 
     return (
-        <Pressable
+        <TouchableOpacity
             style={{
                 ...styles.button,
                 backgroundColor,
@@ -31,7 +26,7 @@ const Button: FC<IGenericButton> = (props) => {
             onPress={onPress}
         >
             <Text style={textStyle}>{text}</Text>
-        </Pressable>
+        </TouchableOpacity>
     );
 };
 
