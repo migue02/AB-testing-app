@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { Modal as RNModal, Pressable, Text, View } from 'react-native';
+import { Modal as RNModal, View, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -15,7 +15,7 @@ const Modal: FC<IProps> = (props) => {
 
     return (
         <RNModal
-            animationType="slide"
+            animationType="fade"
             transparent={true}
             visible={isVisible}
             onRequestClose={() => {
@@ -25,12 +25,12 @@ const Modal: FC<IProps> = (props) => {
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                     {hasCloseButton && (
-                        <Pressable
+                        <TouchableOpacity
                             style={styles.closeButton}
                             onPress={() => setVisible(!isVisible)}
                         >
                             <Ionicons name="close" size={24} color="black" />
-                        </Pressable>
+                        </TouchableOpacity>
                     )}
                     {children}
                 </View>

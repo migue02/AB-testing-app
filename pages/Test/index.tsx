@@ -2,7 +2,7 @@ import { Image, Text, View } from 'react-native';
 import React from 'react';
 import styles from './styles';
 import PrimaryButton from '../../components/PrimaryButton';
-import LinkButton from '../../components/LinkButton';
+import TextButton from '../../components/TextButton';
 
 const Test = () => {
     return (
@@ -21,7 +21,7 @@ const Test = () => {
                 onPress={() => console.log('pressed')}
                 {...styles.button}
             />
-            <LinkButton
+            <TextButton
                 text="Not yet? Give us feedback"
                 onPress={() => console.log('pressed')}
                 {...styles.buttonLink}

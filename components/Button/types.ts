@@ -14,3 +14,7 @@ export interface IGenericButton extends IButton {
     height?: number;
 }
 
+export interface ITextButton extends IButton {
+    isUnderline?: boolean;
+    isUpperCase?: boolean;
+}
