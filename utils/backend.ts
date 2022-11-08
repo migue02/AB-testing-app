@@ -2,7 +2,7 @@ import { ABTestingTypes } from "../client/ABTestingDataClient/types";
 import { getRandomABTesting } from "../client/utils";
 
 const fakeBackend = async (user?: string) => {
-    return new Promise(resolve => setTimeout(resolve, 4000));
+    return new Promise(resolve => setTimeout(resolve, 2000));
 }
 
 /**

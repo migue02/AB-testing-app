@@ -22,6 +22,31 @@ const Home: FC<HomeProps> = (props) => {
         <View style={styles.container}>
             <Text>Home page</Text>
             {popupUserData ? (
+                <View>
+                    <Text>POPUP USER DATA</Text>
+                    <Text>{`ABTesting used for this user is: ${popupUserData?.type}`}</Text>
+                    <Text>
+                        {`Popup has been shown to the user: ${popupUserData?.totalShown} time` +
+                            (popupUserData?.totalShown === 1 ? '' : 's')}
+                    </Text>
+                    <Text>{`Installation date for the user is: ${new Date(
+                        popupUserData.installationDate
+                    ).toDateString()}`}</Text>
+                    <Text>{`Last time popup shown to the user: ${new Date(
+                        popupUserData?.lastDate
+                    ).toDateString()}`}</Text>
+                    <Text>
+                        Popup{' '}
+                        {popupUserData?.hasUserFeedback
+                            ? 'has'
+                            : `doesn't have`}{' '}
+                        user feedback
+                    </Text>
+                </View>
+            ) : (
+                <></>
+            )}
+            {popupUserData ? (
                 <>
                     <PrimaryButton
                         text="Launch test ABTesting"
