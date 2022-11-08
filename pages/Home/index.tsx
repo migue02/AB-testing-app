@@ -21,16 +21,30 @@ const Home: FC<HomeProps> = (props) => {
     return (
         <View style={styles.container}>
             <Text>Home page</Text>
-            {/* {popupUserData ? (
-                <PrimaryButton
-                    text="Launch user ABTesting again"
-                    onPress={() =>
-                        navigation.navigate('ABTesting', {
-                            type: popupUserData.type,
-                        })
-                    }
-                />
-            ) : null} */}
+            {popupUserData ? (
+                <>
+                    <PrimaryButton
+                        text="Launch test ABTesting"
+                        onPress={() =>
+                            navigation.navigate('ABTesting', {
+                                type: 'test',
+                            })
+                        }
+                        marginTop={30}
+                        width={'70%'}
+                    />
+                    <PrimaryButton
+                        text="Launch control ABTesting again"
+                        onPress={() =>
+                            navigation.navigate('ABTesting', {
+                                type: 'control',
+                            })
+                        }
+                        marginTop={30}
+                        width={'70%'}
+                    />
+                </>
+            ) : null}
         </View>
     );
 };

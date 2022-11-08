@@ -1,10 +1,8 @@
 import { View } from 'react-native';
 import React, { FC } from 'react';
 import styles from './styles';
-import Modal from '../../components/Modal';
 import Test from '../Test';
 import Control from '../Control';
-import useVisibleModal from '../../hooks/useModal';
 import { ABTestingProps } from '../types';
 
 const ABTesting: FC<ABTestingProps> = (props) => {

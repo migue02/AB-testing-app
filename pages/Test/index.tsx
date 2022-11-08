@@ -17,7 +17,7 @@ const Test: FC<IModalViewProps> = (props) => {
     const { triggerMonitoringEvent } = useMonitoring();
 
     return (
-        <Modal hasCloseButton>
+        <Modal hasCloseButton handleClose={() => navigation.goBack()}>
             <View style={styles.container}>
                 <Image
                     style={styles.image}
@@ -32,8 +32,8 @@ const Test: FC<IModalViewProps> = (props) => {
                     text="Rate us"
                     onPress={() => {
                         triggerMonitoringEvent(getGoToRateOnStoreEvent());
-                        navigation.goBack();
                         openRacketPalInStore();
+                        navigation.goBack();
                     }}
                     {...styles.button}
                 />
@@ -41,8 +41,8 @@ const Test: FC<IModalViewProps> = (props) => {
                     text="Not yet? Give us feedback"
                     onPress={() => {
                         triggerMonitoringEvent(getOnGetFeedbackEvent());
+                        navigation.goBack();
                         navigation.navigate('ContactUS');
-                        // navigation.goBack();
                     }}
                     {...styles.buttonLink}
                 />

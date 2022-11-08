@@ -2,6 +2,7 @@ import type { NativeStackNavigationProp, NativeStackScreenProps } from '@react-n
 import { RootStackParamList } from '../navigation';
 export interface IModalViewProps {
     navigation: NativeStackNavigationProp<RootStackParamList, "ABTesting">
+    closeModal?: () => void;
 }
 
 export type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;

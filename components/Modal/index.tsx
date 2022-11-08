@@ -7,15 +7,17 @@ import { getCloseModalEvent } from '../../utils';
 
 interface IProps {
     children: ReactNode;
+    handleClose?: () => void;
     hasCloseButton?: boolean;
 }
 
 const Modal: FC<IProps> = (props) => {
-    const { children, hasCloseButton } = props;
+    const { children, handleClose, hasCloseButton } = props;
     const { triggerMonitoringEvent } = useMonitoring();
 
     const handleCloseButton = () => {
         triggerMonitoringEvent(getCloseModalEvent());
+        handleClose?.();
     };
 
     return (
