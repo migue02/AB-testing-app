@@ -1,4 +1,4 @@
-# Assignment
+# RacketPal Miguel Morales Rodriguez Assignment
 
 ## Code the frontend part in React-Native or ReactJs (bonus points for React-Native) of the two variations (control and test), including:
 
