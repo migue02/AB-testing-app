@@ -3,6 +3,7 @@ import React, { FC, useEffect } from 'react';
 import styles from './styles';
 import { HomeProps } from '../types';
 import { useABTesting } from '../../context/ABTesting';
+import PrimaryButton from '../../components/PrimaryButton';
 
 const Home: FC<HomeProps> = (props) => {
     const { navigation } = props;
@@ -20,6 +21,16 @@ const Home: FC<HomeProps> = (props) => {
     return (
         <View style={styles.container}>
             <Text>Home page</Text>
+            {/* {popupUserData ? (
+                <PrimaryButton
+                    text="Launch user ABTesting again"
+                    onPress={() =>
+                        navigation.navigate('ABTesting', {
+                            type: popupUserData.type,
+                        })
+                    }
+                />
+            ) : null} */}
         </View>
     );
 };

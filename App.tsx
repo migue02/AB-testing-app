@@ -10,7 +10,7 @@ import {
 } from './client/ABTestingDataClient';
 import { ABTestingProvider } from './context/ABTesting';
 import { MonitoringDataProvider } from './context/MonitoringData';
-import Loading from './pages/Loding';
+import Loading from './pages/Loading';
 
 SplashScreen.preventAutoHideAsync();
 

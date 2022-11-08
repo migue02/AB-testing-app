@@ -1,12 +1,8 @@
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation';
 export interface IModalViewProps {
-    closeModal?: () => void;
+    navigation: NativeStackNavigationProp<RootStackParamList, "ABTesting">
 }
 
 export type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 export type ABTestingProps = NativeStackScreenProps<RootStackParamList, 'ABTesting'>;
-
-export interface TestProps extends IModalViewProps {
-    onGiveFeedback: () => void;
-}

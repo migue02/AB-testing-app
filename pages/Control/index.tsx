@@ -13,16 +13,17 @@ import {
 } from '../../utils';
 import { IModalViewProps } from '../types';
 import { useMonitoring } from '../../context/MonitoringData';
+import Modal from '../../components/Modal';
 
 const Control: FC<IModalViewProps> = (props) => {
     const [stars, setStars] = useState(-1);
     const { triggerMonitoringEvent } = useMonitoring();
-    const { closeModal } = props;
+    const { navigation } = props;
 
     const handleSelectedStar = (index: number) => {
         setStars(index);
         if (index >= 3) {
-            closeModal?.();
+            navigation.goBack();
             triggerMonitoringEvent(getRatingEvent(index));
             openRacketPalInStore();
         }
@@ -30,15 +31,16 @@ const Control: FC<IModalViewProps> = (props) => {
 
     const onSubmit = (text: string) => {
         triggerMonitoringEvent(getRatingEvent(stars, text));
-        closeModal?.();
+        navigation.goBack();
     };
 
     const onRemindMeLater = () => {
         triggerMonitoringEvent(getRemindMeLaterEvent());
-        closeModal?.();
+        navigation.goBack();
     };
 
     return (
+        // <Modal>
         <View style={styles.container}>
             <View style={styles.icon}>
                 <FontAwesome5
@@ -63,6 +65,7 @@ const Control: FC<IModalViewProps> = (props) => {
                 />
             )}
         </View>
+        // </Modal>
     );
 };
 
