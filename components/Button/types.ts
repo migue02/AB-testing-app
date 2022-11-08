@@ -3,7 +3,7 @@ import { GestureResponderEvent, TextStyle } from "react-native";
 export interface IButton {
     text: string;
     onPress: (event: GestureResponderEvent) => void;
-    width?: number;
+    width?: number | string;
     marginTop?: number;
 }
 

@@ -20,13 +20,21 @@ const Navigation = () => {
         <View style={{ flex: 1, width: '100%' }}>
             <NavigationContainer>
                 <Stack.Navigator>
-                    <Stack.Screen
-                        name="Home"
-                        component={Home}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen name="ContactUS" component={ContactUS} />
-                    <Stack.Screen name="ABTesting" component={ABTesting} />
+                    <Stack.Group>
+                        <Stack.Screen
+                            name="Home"
+                            component={Home}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen name="ContactUS" component={ContactUS} />
+                    </Stack.Group>
+                    <Stack.Group screenOptions={{ presentation: 'modal' }}>
+                        <Stack.Screen
+                            name="ABTesting"
+                            component={ABTesting}
+                            options={{ headerShown: false }}
+                        />
+                    </Stack.Group>
                 </Stack.Navigator>
             </NavigationContainer>
         </View>
