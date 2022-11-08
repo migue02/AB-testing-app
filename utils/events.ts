@@ -1,8 +1,5 @@
-import { AnalyticsEvent, AnalyticsRatingsEvent } from "../../context/types";
-import { getLoggedUser } from "../../utils/backend";
-import { ABTestingTypes } from "./types";
-
-export const getSelectedABTesting = (): ABTestingTypes => Math.random() > 0.5 ? 'test' : 'control';
+import { AnalyticsEvent, AnalyticsRatingsEvent } from '../context/types';
+import { getLoggedUser } from './backend';
 
 const getCommonEventValues = (): { date: string, user: string } => {
     return {

@@ -2,16 +2,14 @@ import { AnalyticsEvent, MonitoringDataClient } from "../../context/types";
 import { ABTestingTypes } from "./types";
 
 export class ABTestingDataClient implements MonitoringDataClient {
-    constructor(key: string) {
+    constructor(key: ABTestingTypes) {
         this.key = key;
         console.log('Created  ABTestingDataClient', { key });
     }
-
-    name = 'ABTesting';
-    key = '';
+    key: ABTestingTypes;
 
     async init(): Promise<void> {
-        console.log('Initialized ', this.name, this.key);
+        console.log('Initialized ', this.key);
     }
 
     async logEvent(event: AnalyticsEvent) {

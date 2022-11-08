@@ -1,17 +1,18 @@
-import { Image, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import React, { FC, useState } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import styles from './styles';
 import TextButton from '../../components/TextButton';
 import StarButtons from '../../components/StarButtons';
 import Form from '../../components/Form';
-import { Colors, openRacketPalInStore } from '../../utils';
-import { useMonitoring } from '../../context/MonitoringData';
-import { IModalViewProps } from '../types';
 import {
+    Colors,
+    openRacketPalInStore,
     getRatingEvent,
     getRemindMeLaterEvent,
-} from '../../client/ABTestingDataClient/utils';
+} from '../../utils';
+import { IModalViewProps } from '../types';
+import { useMonitoring } from '../../context/MonitoringData';
 
 const Control: FC<IModalViewProps> = (props) => {
     const [stars, setStars] = useState(-1);

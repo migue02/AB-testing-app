@@ -3,7 +3,7 @@ import { Modal as RNModal, View, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import { useMonitoring } from '../../context/MonitoringData';
-import { getCloseModalEvent } from '../../client/ABTestingDataClient/utils';
+import { getCloseModalEvent } from '../../utils';
 
 interface IProps {
     children: ReactNode;
@@ -15,6 +15,11 @@ interface IProps {
 const Modal: FC<IProps> = (props) => {
     const { children, isVisible, handleClose, hasCloseButton } = props;
     const { triggerMonitoringEvent } = useMonitoring();
+
+    const handleCloseButton = () => {
+        handleClose();
+        triggerMonitoringEvent(getCloseModalEvent());
+    };
 
     return (
         <RNModal
@@ -30,10 +35,7 @@ const Modal: FC<IProps> = (props) => {
                     {hasCloseButton && (
                         <TouchableOpacity
                             style={styles.closeButton}
-                            onPress={() => {
-                                handleClose();
-                                triggerMonitoringEvent(getCloseModalEvent());
-                            }}
+                            onPress={handleCloseButton}
                         >
                             <Ionicons name="close" size={24} color="black" />
                         </TouchableOpacity>
