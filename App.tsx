@@ -3,31 +3,53 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import Navigation from './navigation';
 import { useCallback, useEffect, useState } from 'react';
-import { Colors } from './utils';
-import { MonitoringDataProvider } from './context/MonitoringData';
+import { Colors, getPopupUserData, PopUpUserData } from './utils';
 import {
     ABTestingDataClient,
     createABTestingDataClient,
 } from './client/ABTestingDataClient';
-import { getSelectedABTesting } from './client/ABTestingDataClient/utils';
+import { ABTestingProvider } from './context/ABTesting';
+import { MonitoringDataProvider } from './context/MonitoringData';
+import Loading from './pages/Loding';
 
 SplashScreen.preventAutoHideAsync();
 
-export default function App() {
-    const [clients, setClients] = useState<ABTestingDataClient[]>();
+const App = () => {
+    const [clients, setClients] = useState<ABTestingDataClient[]>([]);
+    const [userLoaded, setUserLoaded] = useState(false);
+    const [userPopUpData, setPopupUserData] = useState<PopUpUserData>();
+
+    useEffect(() => {
+        const addClient = (userPopUpData: PopUpUserData) => {
+            const abDataClient = createABTestingDataClient(userPopUpData.type);
+            setClients([abDataClient]);
+        };
+
+        const getUserPopUpData = async () => {
+            getPopupUserData()
+                .then((userPopUpData) => {
+                    setPopupUserData(userPopUpData);
+                    addClient(userPopUpData);
+                })
+                .finally(() => {
+                    setUserLoaded(true);
+                });
+        };
+
+        getUserPopUpData();
+    }, []);
+
     const [fontsLoaded] = useFonts({
         'Montserrat-Regular': require('./assets/fonts/Montserrat-Regular.ttf'),
         'Montserrat-Bold': require('./assets/fonts/Montserrat-Bold.ttf'),
     });
 
     useEffect(() => {
-        async function prepare() {
+        const prepare = async () => {
             await SplashScreen.preventAutoHideAsync();
-        }
-        const abDataClient = createABTestingDataClient(getSelectedABTesting());
+        };
 
         prepare();
-        setClients([abDataClient]);
     }, []);
 
     const onLayoutRootView = useCallback(async () => {
@@ -36,18 +58,20 @@ export default function App() {
         }
     }, [fontsLoaded]);
 
-    if (!fontsLoaded || !clients) {
-        return null;
-    }
-
     return (
         <View style={styles.container} onLayout={onLayoutRootView}>
-            <MonitoringDataProvider clients={clients}>
-                <Navigation />
-            </MonitoringDataProvider>
+            {!fontsLoaded || !userLoaded ? (
+                <Loading />
+            ) : (
+                <ABTestingProvider popupUserData={userPopUpData}>
+                    <MonitoringDataProvider clients={clients}>
+                        <Navigation />
+                    </MonitoringDataProvider>
+                </ABTestingProvider>
+            )}
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -57,3 +81,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
+
+export default App;

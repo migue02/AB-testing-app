@@ -1,17 +1,18 @@
 import React, { createContext, FC, useContext, useEffect } from 'react';
 import {
     AnalyticsEvent,
-    ContextType,
+    MonitoringDataContextType,
     MonitoringDataProviderType,
 } from './../types';
 
-const contextDefaults: ContextType = {
+const contextDefaults: MonitoringDataContextType = {
     clients: [],
     triggerMonitoringEvent: (_) => {},
     logMonitoringException: (_) => {},
 };
 
-const MonitoringDataContext = createContext<ContextType>(contextDefaults);
+const MonitoringDataContext =
+    createContext<MonitoringDataContextType>(contextDefaults);
 
 export const MonitoringDataProvider: FC<MonitoringDataProviderType> = ({
     clients,
