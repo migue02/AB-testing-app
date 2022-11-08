@@ -1,12 +1,8 @@
-# racket-pal-rateus-miguelmorales
+# Assignment
 
-Miguel home assessment for RacketPal
+## Code the frontend part in React-Native or ReactJs (bonus points for React-Native) of the two variations (control and test), including:
 
-## Assignment
-
-### Code the frontend part in React-Native or ReactJs (bonus points for React-Native) of the two variations (control and test), including:
-
-#### The A/B test mechanism
+### The A/B test mechanism
 
 -   To control the A/B test I've created `ABTesting` context. The context has this type:
     -   `export type ABTestingContextType = {popupUserData?: PopUpUserData,shouldPopupBeShown: () => boolean; }`
@@ -20,7 +16,7 @@ Miguel home assessment for RacketPal
 -   This `ABTesting` context with its provider, can be used with the `useABTesting` hook, in order to get `popupUserData` and/or `shouldPopupBeShown`
 -   `useABTesting` has been used in the Home page, where is triggered the first time the page is shown, and checks if the PopUp has to be shown. If it has to be shown then it will display it.
 
-#### Tracking events so we can measure the results. Tracking the user is one of the most important parts of our app, the events are helping us make more informed decisions when we want to build something new.
+### Tracking events so we can measure the results. Tracking the user is one of the most important parts of our app, the events are helping us make more informed decisions when we want to build something new.
 
 -   To track events I've created the `MonitoringData` context. This context is a scalable component where you can add as many monitoring clients as you wish. It's an abstract component where it doesn't matter which data each client is using.
 -   The first time you setup the `MonitoringData` context you have to pass the clients you want to use. With the array of clients (check `createABTestingDataClient` and its type) this context will initialise all of them just once. This initialisation inside the provider will call the `init` function of all clients of the passed array. This is done like this because usually monitoring clients has to somehow initialise the client with a specific key or extra configuration options.
@@ -39,7 +35,7 @@ This app only has one client: **ABTestingDataClient**
 -   In a real world scenario the client should setup in the `init` function a used in `logEvent` and `logException` to send to the backend the data.
 -   I've created some utils function to get the data needed per each event, please check `utils/events.ts` file.
 
-### Highlight the required backend information. Will be great if you can also draw a flow of the whole feature
+## Highlight the required backend information. Will be great if you can also draw a flow of the whole feature
 
 -   About the events sent to the Backend I've already explained them:
     -   This app only has one client: **ABTestingDataClient**
@@ -79,4 +75,23 @@ This app only has one client: **ABTestingDataClient**
             -   lastDate: to Date.now()
             -   totalShown: totalShown + 1
 
-### Highlight any missing specs and any assumptions you had to make
+## Highlight any missing specs and any assumptions you had to make
+
+All assumptions I've made about the backend are added to the above sections.
+I assumed this way of showing the popup:
+
+-   In the Home page check if the popup has to be shown
+    -   If it has to be shown wait 1 second so it's not shown as soon as the page is shown.
+    -   If it hasn't to be shown don't show it
+-   The fake user will have assigned to him/her one specific testing type based on this function `getRandomABTesting`
+    -   In order to see both implementations I've added two buttons so you can see both popups and test the way the events are sent.
+
+## Todo
+
+-   Create tests specially for the two contexts:
+    -   ABTesting
+    -   MonitoringData
+-   Add exception cases
+-   Add comments
+-   Refactor the use of fonts
+-   Refactor how the types are specified, maybe too spread in the code
