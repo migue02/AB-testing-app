@@ -1,5 +1,16 @@
 # RacketPal Miguel Morales Rodriguez Assignment
 
+## Used environment
+-   Expo 46.0
+-   node v16.17.1
+-   yarn 1.22.19
+
+## How to start the app
+-   **Install dependencies**: yarn
+-   **iOS**: yarn ios
+-   **Android**: yarn android
+
+
 ## Code the frontend part in React-Native or ReactJs (bonus points for React-Native) of the two variations (control and test), including:
 
 ### The A/B test mechanism
