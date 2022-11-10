@@ -5,6 +5,7 @@ export interface IButton {
     onPress: (event: GestureResponderEvent) => void;
     width?: number | string;
     marginTop?: number;
+    testID?: string;
 }
 
 export interface IGenericButton extends IButton {

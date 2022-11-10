@@ -12,6 +12,7 @@ const Button: FC<IGenericButton> = (props) => {
         width = 'auto',
         marginTop = 0,
         onPress,
+        testID,
     } = props;
 
     return (
@@ -24,8 +25,11 @@ const Button: FC<IGenericButton> = (props) => {
                 marginTop,
             }}
             onPress={onPress}
+            testID={testID + '-button'}
         >
-            <Text style={textStyle}>{text}</Text>
+            <Text testID={testID + '-text'} style={textStyle}>
+                {text}
+            </Text>
         </TouchableOpacity>
     );
 };
