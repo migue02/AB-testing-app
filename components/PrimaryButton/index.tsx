@@ -5,10 +5,11 @@ import styles from './styles';
 import { IButton } from '../Button/types';
 
 const PrimaryButton: FC<IButton> = (props) => {
-    const { text, onPress, marginTop, width } = props;
+    const { text, onPress, marginTop, width, testID } = props;
 
     return (
         <Button
+            testID={testID || 'primary'}
             text={text}
             backgroundColor={Colors.primaryButton.backgroundColor}
             textStyle={styles.text}
