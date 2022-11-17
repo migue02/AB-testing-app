@@ -1,4 +1,4 @@
-# RacketPal Miguel Morales Rodriguez Assignment
+# AB-testing-app
 
 ## Used environment
 -   Expo 46.0
